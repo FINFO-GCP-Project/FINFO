@@ -53,7 +53,7 @@ resource "google_compute_instance" "default" {
   metadata = {
     startup-script = <<-EOF
   #<"${file("install.sh")}"
-   < "sudo apt-get install git-core"
+    "sudo apt-get install git-core"
   EOF
   }
  # metadata_startup_script ="${file("install.sh")}"
