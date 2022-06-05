@@ -39,9 +39,9 @@ resource "google_compute_instance" "default" {
   zone         =  var.gcp_zone
   tags         = ["ssh"]
 
-  metadata = {
-    enable-oslogin = "TRUE"
-  }
+  #metadata = {
+   # enable-oslogin = "TRUE"
+  #}
   boot_disk {
     initialize_params {
       image = "debian-11-bullseye-v20220406"
