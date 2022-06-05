@@ -34,7 +34,7 @@ provider "google" {
   
   # Create a single Compute Engine instance
 resource "google_compute_instance" "default" {
- name         = "finfo-instance1"
+ name         = "finfo-instance"
   machine_type = "e2-medium"
   zone         =  var.gcp_zone
   tags         = ["ssh"]
@@ -67,7 +67,7 @@ resource "google_compute_instance" "default" {
 
 resource "google_storage_bucket" "private-equity" {
   name          = "private-equity"
-  location      = "US"
+  location      = "australia-southeast2-a"
   force_destroy = true
     }
 
