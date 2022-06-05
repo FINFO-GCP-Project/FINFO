@@ -70,7 +70,7 @@ module "pubsub" {
   source  = "terraform-google-modules/pubsub/google"
   version = "3.2.0"
 
-  topic      = "my_topic"
+  topic      = "priv_equi_topic"
   project_id = var.gcp_project
 
 pull_subscriptions = [
