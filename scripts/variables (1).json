@@ -1,0 +1,6 @@
+{
+    "bucket_path": "gs://australia-southeast1-pfinfo-37080fbf-bucket",
+    "gce_region": "australia-southeast1",
+    "gce_zone": "australia-southeast1-a",
+    "project_id": "striped-impulse-352211"
+}
