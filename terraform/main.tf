@@ -35,7 +35,7 @@ provider "google" {
  
 
 resource "google_storage_bucket" "private-equity" {
-  name          = "private-equity"
+  name          = "gcp-project-346311"
   location      = "australia-southeast2-a"
   force_destroy = true
     }
