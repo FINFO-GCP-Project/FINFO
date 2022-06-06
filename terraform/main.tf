@@ -32,38 +32,7 @@ provider "google" {
 
 
   
-  # Create a single Compute Engine instance
-resource "google_compute_instance" "default" {
- name         = "finfo-instance"
-  machine_type = "e2-medium"
-  zone         =  var.gcp_zone
-  tags         = ["ssh"]
-
-  #metadata = {
-   # enable-oslogin = "TRUE"
-  #}
-  boot_disk {
-    initialize_params {
-      image = "debian-11-bullseye-v20220406"
-    }
-  }
-
-# Install setup files
-  #metadata_startup_script = "sudo apt-get update;sudo apt-get install git-core;sudo apt-get install apache2 php7.0;sudo apt install python3-pip;sudo pip install google-cloud;sudo pip install google-cloud-pubsub;python3 -m pip install --upgrade pip;pip install apache-beam;pip install apitools;pip install api-base;pip install --upgrade google-cloud-storage"
-  metadata = {
-    startup-script = <<-EOF
-      sudo apt-get install git-core
-  EOF
-  }
- # metadata_startup_script ="${file("install.sh")}"
-  network_interface {
-    network = "default"
-
-    access_config {
-      # Include this section to give the VM an external IP address
-    }
-  }
-}
+ 
 
 resource "google_storage_bucket" "private-equity" {
   name          = "private-equity"
@@ -71,27 +40,7 @@ resource "google_storage_bucket" "private-equity" {
   force_destroy = true
     }
 
-module "pubsub" {
-  source  = "terraform-google-modules/pubsub/google"
-  version = "3.2.0"
 
-  topic      = "priv-equity"
-  project_id = var.gcp_project
-
-pull_subscriptions = [
-    {
-      name                    = "pull"                                               // required
-      ack_deadline_seconds    = 20                                                   // optional
-      
-      max_delivery_attempts   = 5                                                    // optional
-      maximum_backoff         = "600s"                                               // optional
-      minimum_backoff         = "300s"                                               // optional
-     
-      enable_message_ordering = true                                                 // optional
-     
-    }
-  ]
-}
 
 resource "google_service_account" "service_account" {
   account_id   = "finfo-sa"
