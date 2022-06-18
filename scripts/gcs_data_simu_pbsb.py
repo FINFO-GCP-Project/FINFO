@@ -3,7 +3,7 @@ import random
 import csv
 import json
 import os
-import requests as rq
+#import requests as rq
 import logging
 import argparse
 import datetime
